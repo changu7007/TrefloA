@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { AiFillStar, AiOutlineDown } from "react-icons/ai";
 import ProductModal from "./ProductModal";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,11 +18,7 @@ export const PizzaCard = ({ pizzas }) => {
     });
     setPizzas(updatedPizzas);
   };
-  useEffect(() => {
-    modal
-      ? (document.body.style.overflow = "hidden")
-      : (document.body.style.overflow = "auto");
-  }, []);
+
   const dropModal = (index) => {
     if (modal === index) setModal(-1);
     else setModal(index);
@@ -112,6 +108,7 @@ export const PizzaCard = ({ pizzas }) => {
             </div>
             {modal === i && (
               <ProductModal
+                modal={modal}
                 id="wrapper"
                 pizza={pizza}
                 handleClose={handleClose}

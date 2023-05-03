@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import Pizza from "./Pizza";
+import Footer from "@/components/Footer";
 
 export default function Home({ pizzas }) {
   return (
@@ -8,6 +9,7 @@ export default function Home({ pizzas }) {
       <Navbar />
       <Hero />
       <Pizza pizzas={pizzas} />
+      <Footer />
     </main>
   );
 }

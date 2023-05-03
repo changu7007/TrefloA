@@ -5,8 +5,9 @@ import {
   removeFromCart,
 } from "@/store/cartSlice";
 import store from "@/store/store";
+import Link from "next/link";
 import React, { useMemo } from "react";
-import { Provider, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -15,9 +16,9 @@ const Cart = () => {
     return cartItems.reduce((total, val) => total + val.onePizzaPrice, 0);
   }, [cartItems]);
   return (
-    <Provider store={store}>
-      <div>
-        <Navbar />
+    <div>
+      <Navbar />
+      {cartItems.length > 0 ? (
         <div className="px-2 py-2">
           <h1 className="text-lg font-bold py-4">CartItems</h1>
           <div className="flex flex-col lg:flex-row gap-2">
@@ -34,7 +35,10 @@ const Cart = () => {
                 </thead>
                 <tbody className="bg-gray-200 rounded-md rounded-t-md text-gray-600">
                   {cartItems.map((cartItem, i) => (
-                    <tr className="border-b-[1px] border-dashed border-gray-400">
+                    <tr
+                      key={i}
+                      className="border-b-[1px] border-dashed border-gray-400"
+                    >
                       <td className="px-3 py-2 whitespace-nowrap">
                         <div className="flex gap-2">
                           <img
@@ -113,7 +117,10 @@ const Cart = () => {
             </div>
             <div className="block md:hidden w-full">
               {cartItems.map((cartItem, i) => (
-                <div className="bg-gray-300 rounded-sm px-2 py-1.5 border-b-[1px] mb-2 ">
+                <div
+                  key={i}
+                  className="bg-gray-300 rounded-sm px-2 py-1.5 border-b-[1px] mb-2 "
+                >
                   <img
                     src={cartItem.img_url}
                     alt={cartItem.name}
@@ -191,7 +198,10 @@ const Cart = () => {
                 </h1>
                 <p className="text-xs text-gray-600">Items</p>
                 {cartItems.map((cartItem, i) => (
-                  <div className="flex items-center justify-between pb-2 ">
+                  <div
+                    key={i}
+                    className="flex items-center justify-between pb-2 "
+                  >
                     <span className="text-xs font-semibold">
                       {cartItem.quantity} x {cartItem.name}
                     </span>
@@ -212,8 +222,20 @@ const Cart = () => {
             </div>
           </div>
         </div>
-      </div>
-    </Provider>
+      ) : (
+        <div className="flex flex-col items-center justify-center h-screen w-full">
+          <h1 className="text-base font-semibold">
+            Oops! Your pizza Cart is Empty ! Go For Pizza Hunting
+          </h1>
+          <Link
+            href="/"
+            className="px-3 py-2 bg-blue-800 mt-2 text-white rounded-sm shadow-sm"
+          >
+            See Pizzas
+          </Link>
+        </div>
+      )}
+    </div>
   );
 };
 
