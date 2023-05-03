@@ -16,13 +16,13 @@ const ProductModal = ({ id, pizza, onClick, handleClose }) => {
       className="fixed pt-[200px] pb-10 px-4 md:p-0 overflow-auto inset-0 flex items-center justify-center transition-transform translate-x-0 duration-200 ease-in bg-black bg-opacity-25 backdrop-blur-sm"
     >
       <div
-        key={pizza.id}
+        key={pizza?.id}
         className="bg-[#fefffe] w-[350px] px-4 md:px-8 py-4 rounded-md"
       >
         <div className="flex items-center justify-between">
           <h1 className="text-sm font-bold text-gray-400 py-4">
             {" "}
-            Buy Pizza | {pizza.name} Details
+            Buy Pizza | {pizza?.name} Details
           </h1>
           <AiFillCloseCircle
             onClick={onClick}
@@ -31,13 +31,13 @@ const ProductModal = ({ id, pizza, onClick, handleClose }) => {
         </div>
         <div className="flex flex-col items-start justify-between">
           <img
-            src={pizza.img_url}
-            alt={pizza.name}
+            src={pizza?.img_url}
+            alt={pizza?.name}
             className="w-full rounded-md object-cover"
           />
           <div className="flex items-center justify-between w-full">
-            <h1 className="font-bold text-lg py-3">{pizza.name}</h1>
-            {pizza.isVeg === true ? (
+            <h1 className="font-bold text-lg py-3">{pizza?.name}</h1>
+            {pizza?.isVeg === true ? (
               <div className="w-fit  px-2 py-1 bg-green-800 rounded-md text-xs text-green-200 ">
                 veg
               </div>
@@ -50,13 +50,13 @@ const ProductModal = ({ id, pizza, onClick, handleClose }) => {
           <div className="flex flex-col items-start justify-start pb-3">
             <p className="font-semibold text-xs text-gray-400">Description</p>
             <h1 className="font-semibold text-sm text-gray-600">
-              {pizza.description}
+              {pizza?.description}
             </h1>
           </div>
           <div className="flex items-center justify-between w-full pb-1">
-            <p className="font-bold text-base">&#8377; {pizza.price}</p>
+            <p className="font-bold text-base">&#8377; {pizza?.price}</p>
             <p className="font-semibold text-base flex items-center justify-center my-auto">
-              <AiFillStar className="text-yellow-600 w-6" /> {pizza.rating}
+              <AiFillStar className="text-yellow-600 w-6" /> {pizza?.rating}
             </p>
           </div>
           <div className="w-full pb-2">
@@ -101,7 +101,7 @@ const ProductModal = ({ id, pizza, onClick, handleClose }) => {
           <div className="w-full pb-2">
             {pizza?.toppings?.map((topping) => (
               <>
-                {topping.isRadio ? (
+                {topping?.isRadio ? (
                   <>
                     <p className="text-xs text-gray-500 font-semibold py-1">
                       {topping.title}
@@ -141,8 +141,8 @@ const ProductModal = ({ id, pizza, onClick, handleClose }) => {
                 ) : (
                   <>
                     <p className="text-xs text-gray-500 font-semibold py-1">
-                      {topping.title}
-                      {topping.isRadio && (
+                      {topping?.title}
+                      {topping?.isRadio && (
                         <span className="text-red-600">*</span>
                       )}
                     </p>
@@ -168,7 +168,7 @@ const ProductModal = ({ id, pizza, onClick, handleClose }) => {
           </div>
           {pizza?.toppings?.map((topping) => (
             <>
-              {topping.isRadio ? (
+              {topping?.isRadio ? (
                 <>
                   <button
                     onClick={() => {

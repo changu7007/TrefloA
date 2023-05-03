@@ -75,17 +75,17 @@ export const PizzaCard = ({ pizzas }) => {
       </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full gap-4">
-        {pizzass.map((pizza, i) => (
+        {pizzass?.map((pizza, i) => (
           <div
             key={i}
             className="bg-gray-100 w-full flex gap-2 flex-col rounded-md shadow-md py-2 px-2 md:px-4"
           >
             <img
               className="w-full h-[200px] object-cover rounded-md"
-              src={pizza.img_url}
-              alt={pizza.name}
+              src={pizza?.img_url}
+              alt={pizza?.name}
             />
-            {pizza.isVeg === true ? (
+            {pizza?.isVeg === true ? (
               <div className="w-fit  px-2 py-1 bg-green-800 rounded-md text-xs text-green-200 ">
                 veg
               </div>
@@ -94,16 +94,18 @@ export const PizzaCard = ({ pizzas }) => {
                 non-veg
               </div>
             )}
-            <h1 className="text-left w-full font-bold text-lg">{pizza.name}</h1>
+            <h1 className="text-left w-full font-bold text-lg">
+              {pizza?.name}
+            </h1>
             <div className="flex items-start justify-start">
               <h1 className="font-semibold text-sm text-gray-400">
-                {`${pizza.description.slice(0, 30)}...`}
+                {`${pizza?.description?.slice(0, 30)}...`}
               </h1>
             </div>
             <div className="flex items-center justify-between">
-              <p className="font-semibold text-sm">&#8377; {pizza.price}</p>
+              <p className="font-semibold text-sm">&#8377; {pizza?.price}</p>
               <p className="font-semibold text-sm flex items-center justify-center my-auto">
-                <AiFillStar className="text-yellow-600 w-6" /> {pizza.rating}
+                <AiFillStar className="text-yellow-600 w-6" /> {pizza?.rating}
               </p>
             </div>
             {modal === i && (
@@ -115,7 +117,7 @@ export const PizzaCard = ({ pizzas }) => {
                 onClick={() => setModal(!modal)}
               />
             )}
-            {cartItems.some((cartItem) => cartItem.id === pizza.id) ? (
+            {cartItems?.some((cartItem) => cartItem.id === pizza.id) ? (
               <>
                 <button
                   key={i}

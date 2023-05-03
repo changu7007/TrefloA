@@ -34,7 +34,7 @@ const Cart = () => {
                   </tr>
                 </thead>
                 <tbody className="bg-gray-200 rounded-md rounded-t-md text-gray-600">
-                  {cartItems.map((cartItem, i) => (
+                  {cartItems?.map((cartItem, i) => (
                     <tr
                       key={i}
                       className="border-b-[1px] border-dashed border-gray-400"
@@ -116,7 +116,7 @@ const Cart = () => {
               </table>
             </div>
             <div className="block md:hidden w-full">
-              {cartItems.map((cartItem, i) => (
+              {cartItems?.map((cartItem, i) => (
                 <div
                   key={i}
                   className="bg-gray-300 rounded-sm px-2 py-1.5 border-b-[1px] mb-2 "
@@ -197,7 +197,7 @@ const Cart = () => {
                   CheckOut
                 </h1>
                 <p className="text-xs text-gray-600">Items</p>
-                {cartItems.map((cartItem, i) => (
+                {cartItems?.map((cartItem, i) => (
                   <div
                     key={i}
                     className="flex items-center justify-between pb-2 "
