@@ -13,11 +13,11 @@ const ProductModal = ({ id, pizza, onClick, handleClose }) => {
     <div
       id={id}
       onClick={handleClose}
-      className="fixed pt-[200px] pb-10 px-4 md:p-0 overflow-auto inset-0 flex items-center justify-center transition-transform translate-x-0 duration-200 ease-in bg-black bg-opacity-25 backdrop-blur-sm"
+      className="fixed py-10 px-4 md:p-0 overflow-auto inset-0 flex items-center justify-center transition-transform translate-x-0 duration-200 ease-in bg-black bg-opacity-25 backdrop-blur-sm"
     >
       <div
         key={pizza?.id}
-        className="bg-[#fefffe] w-[350px] px-4 md:px-8 py-4 rounded-md"
+        className="bg-[#fefffe] w-auto px-4 md:px-8 py-4 rounded-md"
       >
         <div className="flex items-center justify-between">
           <h1 className="text-sm font-bold text-gray-400 py-4">
@@ -33,7 +33,7 @@ const ProductModal = ({ id, pizza, onClick, handleClose }) => {
           <img
             src={pizza?.img_url}
             alt={pizza?.name}
-            className="w-full rounded-md object-cover"
+            className="w-[350px] rounded-md object-cover"
           />
           <div className="flex items-center justify-between w-full">
             <h1 className="font-bold text-lg py-3">{pizza?.name}</h1>
